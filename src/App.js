@@ -1,23 +1,78 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Typography, Layout, Card } from "antd";
+
+//components
+import ToDoList from "./ToDoList";
+import ToDoForm from "./ToDoForm";
+
+import "./App.css";
+
+const { Paragraph } = Typography;
+const { Header } = Layout;
+
+var nextID = 0;
 
 function App() {
+  const [toDoList, setToDoList] = useState([]);
+  const [editableStr, setEditableStr] = useState("To Do List");
+
+  const handleToggle = (id) => {
+    let mapped = toDoList.map((task) => {
+      return task.id == id
+        ? { ...task, complete: !task.complete }
+        : { ...task };
+    });
+    setToDoList(mapped);
+  };
+
+  const handleFilter = () => {
+    let filtered = toDoList.filter((task) => {
+      return !task.complete;
+    });
+    setToDoList(filtered);
+  };
+
+  const handleFormSubmit = (task) => {
+    const updated = [...toDoList];
+    let numberOfItems = toDoList.length;
+    updated[numberOfItems] = {
+      ...updated[numberOfItems],
+      id: nextID,
+      task: task["task"],
+      complete: false,
+    };
+    nextID++;
+    setToDoList(updated);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <Layout className="site-layout">
+        <Header className="site-layout-background">
+          <Paragraph
+            className="site-layout-background"
+            editable={{ onChange: setEditableStr }}
+          >
+            {editableStr}
+          </Paragraph>
+        </Header>
+        <Card
+          style={{
+            backgroundColor: "rgb(63, 106, 118)",
+            border: 0,
+            paddingLeft: "40px",
+            minHeight: "22vh",
+          }}
+          size="small"
         >
-          Learn React
-        </a>
-      </header>
+          <ToDoForm onFormSubmit={handleFormSubmit} />
+        </Card>
+        <ToDoList
+          toDoList={toDoList}
+          onToggle={handleToggle}
+          onFilter={handleFilter}
+        />
+      </Layout>
     </div>
   );
 }

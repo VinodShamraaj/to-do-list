@@ -1,5 +1,8 @@
+@import "~antd/dist/antd.css";
+
 .App {
-  text-align: center;
+  text-align: left;
+  overflow-x: hidden;
 }
 
 .App-logo {
@@ -14,14 +17,15 @@
 }
 
 .App-header {
+  padding-left: 40px;
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  text-align: left;
+  font: white;
   font-size: calc(10px + 2vmin);
   color: white;
+  overflow: hidden; /* Hide scrollbars */
 }
 
 .App-link {
@@ -35,4 +39,62 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.site-layout .site-layout-background {
+  background: #282c34;
+  color: #baccd1;
+  font-size: 28px;
+  min-height: 12vh;
+}
+
+.site-layout .site-layout-list {
+  background: #baccd1;
+  color: #282c34;
+  font-size: 16px;
+  padding-left: 40px;
+  min-height: 66vh;
+  height: max-content;
+}
+
+.ant-list-pagination {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.btn-add {
+  color: #baccd1;
+  border-color: #282c34;
+  background: #282c34;
+  max-width: fit-content;
+  align-self: flex-end;
+  margin-right: 50px;
+}
+
+.btn-clear {
+  color: #baccd1;
+  border-color: #282c34;
+  background: #282c34;
+  max-width: fit-content;
+  align-self: flex-end;
+  margin-right: 50px;
+  margin-bottom: 50px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+}
+
+.todo-tag {
+  margin: 10px;
+  white-space: normal !important;
+  max-width: 70vw;
+  word-break: break-word;
+}
+
+.todo-form {
+  margin-top: 20px;
+  margin-right: 20px;
+  padding: 5px;
 }
