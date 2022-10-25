@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Layout, List } from "antd";
 
 // component
@@ -8,9 +8,6 @@ const ToDoList = ({ toDoList, onToggle, onFilter }) => {
   return (
     <Layout className="site-layout">
       <Layout className="site-layout-list">
-        {/* {toDoList.map((todo) => {
-          return <ToDo todo={todo} onToggle={onToggle} onFilter={onFilter} />;
-        })} */}
         <List
           locale={{
             emptyText: "There's nothing to do :(",

@@ -18,9 +18,7 @@ function App() {
 
   const handleToggle = (id) => {
     let mapped = toDoList.map((task) => {
-      return task.id == id
-        ? { ...task, complete: !task.complete }
-        : { ...task };
+      return task.id === id ? { ...task, complete: !task.complete } : { ...task };
     });
     setToDoList(mapped);
   };
@@ -45,14 +43,13 @@ function App() {
     setToDoList(updated);
   };
 
+  console.count("render me");
+
   return (
     <div className="App">
       <Layout className="site-layout">
         <Header className="site-layout-background">
-          <Paragraph
-            className="site-layout-background"
-            editable={{ onChange: setEditableStr }}
-          >
+          <Paragraph className="site-layout-background" editable={{ onChange: setEditableStr }}>
             {editableStr}
           </Paragraph>
         </Header>
@@ -63,15 +60,10 @@ function App() {
             paddingLeft: "40px",
             minHeight: "22vh",
           }}
-          size="small"
-        >
+          size="small">
           <ToDoForm onFormSubmit={handleFormSubmit} />
         </Card>
-        <ToDoList
-          toDoList={toDoList}
-          onToggle={handleToggle}
-          onFilter={handleFilter}
-        />
+        <ToDoList toDoList={toDoList} onToggle={handleToggle} onFilter={handleFilter} />
       </Layout>
     </div>
   );

@@ -9,24 +9,14 @@ const ToDoForm = (props) => {
     props.onFormSubmit({
       task: values["task"],
     });
-    // form.resetFields();
+    form.resetFields();
   };
 
   return (
-    <Form
-      form={form}
-      onFinish={onFinish}
-      layout="horizontal"
-      size="large"
-      autoComplete="off"
-      className="todo-form"
-    >
+    <Form form={form} onFinish={onFinish} layout="horizontal" size="large" autoComplete="off" className="todo-form">
       <Row>
         <Col xs={24} sm={24} md={17} lg={19} xl={20}>
-          <Form.Item
-            name={"task"}
-            rules={[{ required: true, message: "This field is required" }]}
-          >
+          <Form.Item name={"task"} rules={[{ required: true, message: "This field is required" }]}>
             <Input placeholder="What are we doing today?" />
           </Form.Item>
         </Col>
